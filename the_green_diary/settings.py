@@ -15,6 +15,12 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Newly added for globalizing css files
+STATIC_URL = "/static/"
+STATICFILES_DIR = [
+    BASE_DIR / "static",
+]
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -58,7 +64,7 @@ ROOT_URLCONF = "the_green_diary.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],  # Add global templates directory here
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

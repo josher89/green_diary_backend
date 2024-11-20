@@ -1,7 +1,11 @@
-# from django.shortcuts import render
+from django.views.generic import TemplateView
 from rest_framework import generics
 from .serializers import EntrySerializer
 from .models import Entry
+
+
+class HomeView(TemplateView):
+    template_name = "home.html"
 
 
 class EntryListCreateView(generics.ListCreateAPIView):
