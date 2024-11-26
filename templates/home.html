@@ -5,13 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewpoint" content="width=devise-width, initial-scale=1.0">
     <title>Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Open+Sans:wght@200&display=swap"
+        rel="stylesheet">
     {% load static %}
-    <link rel="stylesheet" stylesheet href="{% static 'green_diary/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'green_diary/css/style.css' %}">
 </head>
 
 <body>
-    <h1>Welcome to the Home of the Green Diary</h1>
-    <button onclick="window.location.href='/admin/'">Go to Admin Panel</button>
+    <div class="buttons-container">
+        <div class="header">
+            <h1>The Green Diary</h1>
+        </div>
+        <div></div>
+        <button id="admin-btn" onclick="window.location.href='/admin/'">Admin Portal</button>
+        <button id="data-site-btn" onclick="window.location.href='/api/green_diary/'">Django Rest Framework Raw
+            Data</button>
+        <button id="main-site-btn" onclick="window.location.href='http://localhost:3000'">Main site</button>
+    </div>
+    <!-- Here is another way to use a hyper reference.
+    <button id="main-site-btn" onclick="redirectToReactSite()">Main site</button>
+    <script>
+        function redirectToReactSite() {
+            window.location.href = "http://localhost:3000";
+        }
+    </script> -->
+
 </body>
 
 </html>
