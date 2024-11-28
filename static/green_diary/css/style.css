@@ -22,9 +22,9 @@ body {
 }
 
 h1 {
-    color: #FFC;
+    color: rgb(250, 225, 84);
     font-family: 'Roboto', sans-serif;
-    font-weight: 600;
+    font-weight: 590;
     /* Thin weight */
     font-size: 20px;
 }
