@@ -16,7 +16,7 @@ class EntryListCreateView(generics.ListCreateAPIView):
     serializer_class = EntrySerializer
 
     def get_queryset(self):
-        queryset = Entry.objects.all().oder_by("-timestamp")
+        queryset = Entry.objects.all().order_by("-timestamp")
 
         # "This gets the query parameters"
         search_query = self.request.query_params.get("search", None)
@@ -25,13 +25,13 @@ class EntryListCreateView(generics.ListCreateAPIView):
 
         # "This filters by title or content using the search query"
         if search_query:
-            queryset = queryset.filter(Q(text_icontains=search_query) | Q(title_icontains=search_query))
+            queryset = queryset.filter(Q(text__icontains=search_query) | Q(title__icontains=search_query))
 
         # " This filters by the timestamp range"
         if start_date:
             try:
                 start_date_obj = datetime.strptime(start_date, "%Y-%m-%d")
-                queryset = queryset.filter(timestamp_gte=start_date_obj)
+                queryset = queryset.filter(timestamp__gte=start_date_obj)
             except ValueError:
                 # "This will ignore the invalid date format"
                 pass
@@ -39,7 +39,7 @@ class EntryListCreateView(generics.ListCreateAPIView):
         if end_date:
             try: 
                 end_date_obj = datetime.strptime(end_date, "%Y-%m-%d")
-                queryset = queryset.filter(timestamp_ste=end_date_obj)
+                queryset = queryset.filter(timestamp__lte=end_date_obj)
             except ValueError:
                 # "Again, this will ignore the invalid date format"
                 pass
